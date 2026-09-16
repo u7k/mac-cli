@@ -62,5 +62,4 @@ when needed.
 - [Compatibility and verification](docs/compatibility.md)
 - [Architecture](docs/architecture.md) and [security](SECURITY.md)
 
-Inspired by [Omarchy CLI](https://omarchy.org/manual/omarchy-cli/) and
-[Mac-CLI](https://github.com/guarinogabriel/mac-cli). MIT licensed.
+MIT licensed.
