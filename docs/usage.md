@@ -101,4 +101,3 @@ Feature failures exit 1; argument errors exit 2; platform failures exit 78.
 Diagnostic system utilities may return their English output under data.text.
 Commands that launch an app report that the launch completed, not that the
 app's full UI was inspected.
-

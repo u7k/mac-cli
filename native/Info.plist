@@ -15,4 +15,3 @@
 <key>NSLocationUsageDescription</key><string>Access Wi-Fi network names and scan nearby Wi-Fi networks.</string>
 <key>NSLocationWhenInUseUsageDescription</key><string>Access Wi-Fi network names and scan nearby Wi-Fi networks.</string>
 </dict></plist>
-

@@ -44,3 +44,12 @@ workflows, and macOS 14/15 runtime verification remain subject to the explicit
 matrix in compatibility.md. Private Apple APIs may change independently of
 Rust dependency advisories. No claim of complete hardware certification or
 absence of all security defects is made.
+
+## Source publication checks — 2026-09-16
+
+The source release checks passed: 29 unit tests, 6 CLI integration tests,
+3 release-script tests, formatting, Clippy, release build, and generated docs.
+The refreshed audit checked 98 locked dependencies with zero known
+vulnerabilities or warnings (RustSec e2e640471715167f73e22eaf761f2e547adafeec).
+Private vulnerability reporting is enabled at https://github.com/u7k/mac-cli.
+Developer ID signing and notarization remain separate binary-release steps.
