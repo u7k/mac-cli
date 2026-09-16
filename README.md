@@ -60,7 +60,6 @@ when needed.
 - [Command reference](docs/commands.md)
 - [Settings, apps, and permissions](docs/usage.md)
 - [Compatibility and verification](docs/compatibility.md)
-- [Development and releases](docs/releasing.md)
 - [Architecture](docs/architecture.md) and [security](SECURITY.md)
 
 Inspired by [Omarchy CLI](https://omarchy.org/manual/omarchy-cli/) and
