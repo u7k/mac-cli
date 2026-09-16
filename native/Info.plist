@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>io.uygur.mac-cli</string>
+<key>CFBundleName</key><string>mac-cli</string>
+<key>CFBundleVersion</key><string>1</string>
+<key>CFBundleShortVersionString</key><string>0.1.0</string>
+<key>CFBundleDevelopmentRegion</key><string>en</string>
+<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>NSCalendarsFullAccessUsageDescription</key><string>Read and manage calendar events you request from mac-cli.</string>
+<key>NSRemindersFullAccessUsageDescription</key><string>Read and manage reminders you request from mac-cli.</string>
+<key>NSAppleEventsUsageDescription</key><string>Control the applications you select from mac-cli.</string>
+<key>NSBluetoothAlwaysUsageDescription</key><string>List and connect Bluetooth devices you select.</string>
+<key>NSBluetoothPeripheralUsageDescription</key><string>Manage Bluetooth devices you select.</string>
+<key>NSLocationUsageDescription</key><string>Access Wi-Fi network names and scan nearby Wi-Fi networks.</string>
+<key>NSLocationWhenInUseUsageDescription</key><string>Access Wi-Fi network names and scan nearby Wi-Fi networks.</string>
+</dict></plist>
+

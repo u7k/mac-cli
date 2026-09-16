@@ -1,0 +1,31 @@
+[package]
+name = "mac-cli"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "An English-only macOS command center"
+license = "MIT"
+repository = "https://github.com/u7k/mac-cli"
+build = "build.rs"
+
+[[bin]]
+name = "mac"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "=4.5.20", features = ["string"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+thiserror = "2"
+dialoguer = { version = "0.11", features = ["fuzzy-select"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+libc = "0.2"
+tempfile = "3"
+
+[build-dependencies]
+cc = "1"
+
+[profile.release]
+lto = "thin"
+strip = "debuginfo"
