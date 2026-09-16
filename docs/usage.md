@@ -15,14 +15,12 @@
     mac settings undo OPERATION_ID
 
 The catalog describes types, ranges, restart requirements, and experimental
-settings. A missing override means that macOS chooses the default. Reading a
-stored preference is not a claim that every running application has adopted it.
-Keyboard and trackpad preferences may require an application restart or sign-in.
+settings. A missing override means that macOS chooses the default. Some changes, including
+keyboard and trackpad preferences, require an application restart or sign-in.
 
 Profiles are TOML files containing only explicitly selected catalog settings.
-Saving refuses to replace an existing file. Experimental profile entries still
-require --experimental when applied. No account state, notes, reminders,
-passwords, or clipboard contents are included.
+Saving refuses to replace an existing file. Experimental entries require
+--experimental when applied.
 
 Settings changes are journaled under $XDG_STATE_HOME/mac-cli or
 ~/.local/state/mac-cli with private permissions. All entries are validated before
@@ -55,17 +53,13 @@ mac settings undo OPERATION_ID.
     mac shortcuts run "My Focus Shortcut"
 
 `mac pause` and `mac play` target the media session selected by macOS Now Playing,
-including compatible browser and third-party players. They send distinct pause
-and play requests; repeating pause never toggles playback back on. They control
-one system-selected session, not every app producing sound. A player must expose
-system media controls. With no session, the request may have no effect. Output
-confirms command submission, not a verified playback state. `mac music ...`
-continues to target Apple Music explicitly.
+including compatible browsers and third-party players. Only one session is
+controlled. Repeating pause keeps playback paused. With no session, the request
+may have no effect. Output reports whether the command was sent.
+`mac music ...` targets Apple Music directly.
 
-Weather opens Apple's installed Weather app. It does not retrieve forecasts
-from another provider. Calendar and Reminders use EventKit. Notes and Music use
-their scripting interfaces. Focus and other additional actions can be provided
-by your own named Shortcuts; mac-cli does not install or create those shortcuts.
+`mac weather` opens Apple's Weather app. To control Focus or run other custom
+actions, create a Shortcut and run it with `mac shortcuts run`.
 
 Calendar times require RFC3339 with an explicit offset. "Today" uses the local
 time zone. Delete removes one identified event occurrence or reminder, after
@@ -88,9 +82,8 @@ Feature commands request permission only when needed:
 | Screenshots | Screen Recording |
 
 macOS may attribute command-line permissions to your terminal or signing
-identity. Rebuilding an ad-hoc binary can change that identity. Official releases
-should use a stable Developer ID signature. macOS-owned permission dialogs use
-the system language; mac-cli's own interface and documentation are English only.
+identity. Rebuilding an ad-hoc binary can change that identity and require
+permission again.
 
 --yes confirms only the destructive operation explicitly requested. Without it,
 non-interactive deletion, shutdown, or update installation fails before accessing
@@ -99,5 +92,3 @@ the affected data. It does not bypass OS permissions or administrator authentica
 JSON results have schema_version, command, ok, and either data or error.
 Feature failures exit 1; argument errors exit 2; platform failures exit 78.
 Diagnostic system utilities may return their English output under data.text.
-Commands that launch an app report that the launch completed, not that the
-app's full UI was inspected.

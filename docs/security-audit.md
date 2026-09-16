@@ -2,9 +2,8 @@
 
 Scope: Rust command dispatch, native request validation, subprocess handling,
 terminal output, settings journals/profiles, screenshot publication, installation,
-dependency advisories, and release scripts. This was a source review and local
-regression test pass, not an independent penetration test or a macOS permission
-bypass assessment.
+dependency advisories, and release scripts. Review method: source inspection
+and local regression tests.
 
 ## Findings addressed
 
@@ -36,14 +35,12 @@ bypass assessment.
 ## Remaining release requirements
 
 The local archive is ad-hoc signed. Developer ID signing and Apple notarization
-have not been completed. No public release, remote CI run, or repository security
-reporting channel has been created. Configure private reporting before publishing.
+have not been completed. The source publication checks below record subsequent verification.
 
 Physical display/keyboard brightness, permission-granted/denied application
 workflows, and macOS 14/15 runtime verification remain subject to the explicit
-matrix in compatibility.md. Private Apple APIs may change independently of
-Rust dependency advisories. No claim of complete hardware certification or
-absence of all security defects is made.
+matrix in [compatibility.md](compatibility.md). Private Apple APIs may change
+between macOS releases.
 
 ## Source publication checks — 2026-09-16
 

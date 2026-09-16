@@ -1,6 +1,6 @@
 # Architecture
 
-## Startup boundary
+## Startup
 
 main calls platform::check first. The check uses the compiled OS/architecture
 and, on arm64 macOS, sysctl kern.osproductversion. It has no configuration writes,
@@ -9,8 +9,7 @@ unsupported-platform entry point; build.rs never links Apple frameworks there.
 
 ## Commands and presentation
 
-src/cli.rs is the source of truth for command parsing, command
-discovery, help, and the fuzzy menu. The menu builds argument arrays and calls the
+`src/cli.rs` defines parsing, command discovery, help, and the searchable menu. The menu builds argument arrays and calls the
 same dispatcher as direct CLI commands. It never evaluates a shell command.
 src/output.rs handles ASCII bars, width-aware text, control-character escaping,
 plain output, and schema-versioned JSON envelopes.
@@ -24,13 +23,12 @@ boundary or stable public interface. Every worker repeats the platform gate.
 
 native/bridge.m owns framework calls and releases their objects under ARC and
 explicit Core Foundation ownership. It catches Objective-C exceptions and emits
-English error codes/messages. Private frameworks are dynamically resolved.
+error codes and messages. Private frameworks are dynamically resolved.
 The worker deadline is 75 seconds, preventing blocked native calls from hanging
 the parent indefinitely. EventKit permission waits have a 60-second deadline.
 
 Keyboard writes are read back in a new worker after the writing process exits.
-No persistent brightness daemon is installed. The lid state is checked before a
-keyboard write. Numeric JSON percentages retain read-back precision.
+The lid state is checked before a keyboard write. Numeric JSON percentages retain read-back precision.
 
 Subprocesses have fixed executable paths, separate arguments, English locale,
 bounded captured output, and deadlines. Child process groups are cleaned up on
@@ -39,7 +37,7 @@ are not logged. sudo authentication is handled interactively by macOS.
 
 ## Settings transactions
 
-The catalog is a typed allowlist, not a general defaults shell. Profiles contain
+The catalog restricts settings to known keys and value types. Profiles contain
 only selected entries. An absent value is represented explicitly with exists=false.
 Validation happens for the entire transaction before any preference write.
 
@@ -52,7 +50,7 @@ Undo detects values changed outside the operation and refuses to overwrite them.
 Journal files and locks are private to the user. Values can include user-selected
 paths, so journals and profiles should not be published without review.
 
-## Compatibility boundary
+## Compatibility
 
 Feature availability is determined at runtime. A successful API return is not
 sufficient for level setters: read-back must match. Preference read-back verifies
@@ -71,4 +69,4 @@ for either operation. Missing API symbols and rejected submissions return errors
 The output reports a request, because system playback state cannot be reliably
 read from an ordinary binary on every supported macOS release.
 
-API behavior reference: https://github.com/albertlauncher/albert-plugin-mediaremote
+API reference: [Albert media remote](https://github.com/albertlauncher/albert-plugin-mediaremote).

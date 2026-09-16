@@ -2,7 +2,7 @@
 
 Control your Mac from the terminal.
 
-Built with Rust for macOS 14+ on Apple Silicon. All commands and output are in English.
+Built with Rust for macOS 14+ on Apple Silicon.
 
 ## Install
 
